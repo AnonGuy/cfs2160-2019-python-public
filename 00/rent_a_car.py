@@ -1,7 +1,7 @@
 """Apply a simple test to see if the user is old enough to rent a car."""
 
 name = input('Hello, who are you?\n')
-answer = input(f'How old are you, {name}?\n')
+answer = input(f'When were you born, {name}?\n')
 
 while not answer.isnumeric():
     answer = input(
