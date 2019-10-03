@@ -1,28 +1,21 @@
-#!/usr/bin/env python3
+"""Apply a simple test to see if the user is old enough to rent a car."""
 
-"""
-    Can you rent the car?
+name = input('Hello, who are you?\n')
+answer = input(f'How old are you, {name}?\n')
 
-    Apply a simple test to see if the user is old enough to rent a car.
-"""
+while not answer.isnumeric():
+    answer = input(
+        "Years are usually numeric. Let's try this again.\n"
+        f'How old are you, {name}?\n'
+    )
 
-__author__  = "Tony Jenkins"
-__email__   = "tony.jenkins@elder-studios.co.uk"
-__licence__ = "The Unlicense"
-__version__ = "2019-09-27"
+year = int(answer)
+age = 2019 - year
 
-print ('Hello, who are you? ')
-name = input ()
+print(f'Good to meet you, {name}.')
+print(f'This year you will be {age} years old.')
 
-print ('What year were you born?')
-year = int (input ())
-
-age_this_year = 2019 - year
-
-print ('Good to meet you, ' + name + '.')
-print ('This year you will be ' + str (age_this_year) + ' years old.')
-
-if age_this_year >= 21:
-    print ('So you can rent the car.')
+if age >= 21:
+    print('So you can rent the car.')
 else:
-    print ('Sorry, you are too young to rent.')
+    print('Sorry, you are too young to rent.')
