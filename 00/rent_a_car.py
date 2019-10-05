@@ -2,7 +2,7 @@
 
 answer = input('Hello, who are you?\n')
 
-while not answer.isalpha():
+while not all(word.isalpha() for word in answer.split()):
     answer = input(
         "Names usually contain letters. Let's try this again.\n"
         "Hello, who are you?\n"
@@ -14,7 +14,7 @@ answer = input(f'When were you born, {name}?\n')
 while not answer.isnumeric():
     answer = input(
         "Years are usually numeric. Let's try this again.\n"
-        f'How old are you, {name}?\n'
+        f'When were you born {name}?\n'
     )
 year = int(answer)
 
