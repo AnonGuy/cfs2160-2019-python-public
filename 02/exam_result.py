@@ -1,6 +1,4 @@
-"""
-Process an unlimited amount of student marks.
-"""
+"""Process an unlimited amount of student marks."""
 
 from itertools import count
 
