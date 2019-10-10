@@ -9,8 +9,8 @@ while not students.isnumeric():
     )
 students = int(students)
 
-labs, students = divmod(students, 24)
-labs += bool(students)
+labs, remaining = divmod(students, 24)
+labs += 1 if remaining else 0
 
 plural = 'Labs' if students == 1 else 'Lab'
 print(f'{plural} required: {labs}')
