@@ -1,18 +1,34 @@
 """
-Process five student marks to find the average.
-Display average along with the student's name.
+Process an unlimited amount of student marks.
 """
 
-name = input("Enter the student's name: ")
+from itertools import count
+
 
 marks = []
-for exam in range(1, 6):
-    mark = input(f'Enter result {exam}: ')
-    while not mark.isnumeric():
-        mark = input(
-            'Marks should be numeric.\n'
-            f'Enter result {exam}: '
-        )
-    marks.append(int(mark))
+name = input("Enter the student's name: ")
 
-print(f'Final Mark for {name} is {sum(marks) / len(marks)}')
+for exam in count(1):
+    mark = input(f'Enter result {exam}: ')
+    if mark.isnumeric():
+        marks.append(int(mark))
+    else:
+        break
+
+if marks:
+    highest, lowest, average = (
+        max(marks),
+        min(marks),
+        sum(marks) / len(marks)
+    )
+else:
+    highest, lowest, average = 0, 0, 0
+
+
+print(
+    f'Evaluation for {name}:',
+    f'Highest: {highest}',
+    f'Lowest: {lowest}',
+    f'Average: {average}',
+    sep='\n'
+)
