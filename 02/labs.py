@@ -12,5 +12,5 @@ students = int(students)
 labs, students = divmod(students, 24)
 labs += bool(students)
 
-plural = 's' if students == 1 else ''
-print(f'Lab{plural} required: {labs}')
+plural = 'Labs' if students == 1 else 'Lab'
+print(f'{plural} required: {labs}')
