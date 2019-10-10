@@ -4,6 +4,8 @@ from itertools import count
 
 
 marks = []
+highest, lowest, average = 0, 0, 0
+
 name = input("Enter the student's name: ")
 
 for exam in count(1):
@@ -19,9 +21,6 @@ if marks:
         min(marks),
         sum(marks) / len(marks)
     )
-else:
-    highest, lowest, average = 0, 0, 0
-
 
 print(
     f'Evaluation for {name}:',
