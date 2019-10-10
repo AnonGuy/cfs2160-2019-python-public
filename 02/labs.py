@@ -1,5 +1,7 @@
 """Output the number of labs required for a certain number of students."""
 
+AVAILABLE = 24
+
 students = input('Enter the number of students: ')
 
 while not students.isnumeric():
@@ -9,7 +11,7 @@ while not students.isnumeric():
     )
 students = int(students)
 
-labs, remaining = divmod(students, 24)
+labs, remaining = divmod(students, AVAILABLE)
 labs += 1 if remaining else 0
 
 plural = 'Labs' if students == 1 else 'Lab'
