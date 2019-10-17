@@ -1,9 +1,10 @@
 """Process an unlimited amount of student marks."""
 
 from itertools import count
+from typing import List
 
 
-marks = []
+marks: List[int] = []
 highest, lowest, average = 0, 0, 0
 
 name = input("Enter the student's name: ")
