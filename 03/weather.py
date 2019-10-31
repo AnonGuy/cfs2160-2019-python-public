@@ -9,17 +9,18 @@ from utils import Reading
 
 readings: List[Reading] = []
 
+# Pattern to match temperatures, e.g. "120.2f" or "1C"
 pattern = re.compile(
     '(?P<reading>\d+(.\d+)?)'
     '(?P<scale>[FfCc])?'
 )
 
 count = 1
-while match := pattern.match(
-    input(f'Enter reading {count}: ')
-):
+# Continuously take input until input is invalid
+while match := pattern.match(input(f'Enter reading {count}: ')):
     scale = match.group('scale') or Reading.default_scale or 'C'
-    reading = Reading(scale, float(match.group('reading')))
+    # New Reading instances will set default_scale if None
+    reading = Reading(scale, match.group('reading'))
     readings.append(reading)
     count += 1
 

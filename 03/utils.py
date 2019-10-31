@@ -31,6 +31,8 @@ class Reading:
         self.scale = self.scale.upper()
         if Reading.default_scale is None:
             Reading.default_scale = self.scale
+        if type(self.value) is str:
+            self.value = float(self.value)
 
     def __add__(self, other):
         if self.scale == other.scale:
