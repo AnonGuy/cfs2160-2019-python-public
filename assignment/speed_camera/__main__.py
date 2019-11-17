@@ -35,7 +35,6 @@ print(
         f'Average speed: {average:.2f}mph '
         f'({average * 1.60934:.2f}kph)\n'
     ),
-    f'Number of Vehicles: {count}',
     sep='\n'
 )
 
