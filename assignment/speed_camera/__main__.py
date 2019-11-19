@@ -13,7 +13,8 @@ readings: List[Reading] = []
 
 count = 1
 while (entry := input(f'Enter reading {count}: ')) != 'END':
-    readings.append(Reading.from_string(entry))
+    if reading := Reading.from_string(entry):
+        readings.append(reading)
     count += 1
 
 if readings:
