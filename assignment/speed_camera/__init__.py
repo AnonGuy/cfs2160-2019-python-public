@@ -6,6 +6,8 @@ from dataclasses import dataclass
 
 SPEED_LIMIT = 50
 
+# A valid reading will consist of three characters: 1 Letter (H, L or C) and 2 digits
+# This regular expression will match one of [HLC] followed by two digits
 vehicle_pattern = re.compile(r'([HLC])(\d\d)')
 
 
@@ -13,6 +15,7 @@ vehicle_pattern = re.compile(r'([HLC])(\d\d)')
 class Reading:
     """A Reading taken by the speed camera."""
 
+    # 1-character string representing a vehicle type
     vehicle: str
     speed: int
 
@@ -24,19 +27,23 @@ class Reading:
 
     def __post_init__(self):
         """Prepare dataclass attributes."""
+        # Cast speed to int if it isn't already
         self.speed = int(self.speed)
-        self.violation = self.speed > SPEED_LIMIT
+        # Reading.violation checks if reading is above the limit
+        self.violation: bool = self.speed > SPEED_LIMIT
 
     def from_string(string: str):
         """Create a Reading from a line of stdin."""
-        match = vehicle_pattern.match(string)
-        if match is not None:
+        # If the string is a valid reading:
+        if (match := vehicle_pattern.match(string)):
+            # Create a new Reading object with the pattern matches
             return Reading(*match.groups())
         else:
             return None
 
     def __str__(self):
         """Represent a Reading as a descriptive string."""
+        # Get the vehicle description, or "Unknown" if it doesn't exist
         vehicle = Reading.descriptions.get(
             self.vehicle,
             'Unknown vehicle'
